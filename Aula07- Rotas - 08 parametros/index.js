@@ -10,6 +10,13 @@ app.get("/sobre", function(req, res){
   res.send("Minha pagina sobre");
 })
 
+app.get("/blog", function(req, res){
+  res.send("Minha pagina sobre");
+})
+
+app.get("/ola/:cargo/:nome", function(req, res){
+  res.send("<h1> ola " + req.params.nome + " você é " + req.params.cargo + "?<h1>");
+})
 
 
 app.listen(8082, function(){
