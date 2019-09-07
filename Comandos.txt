@@ -1,2 +1,5 @@
 npm install nodemon -g
 nodemon "nome projeto"
+mysql -h localhost -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+

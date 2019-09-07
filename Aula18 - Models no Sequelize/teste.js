@@ -12,6 +12,7 @@ sequelize.authenticate().then(function(){
 })
 
 // Postagem
+
 const Postagem = sequelize.define('postagens', {
     titulo: {
         type:Sequelize.STRING
@@ -43,3 +44,9 @@ const Usuario = sequelize.define('usuarios', {
     }
 })
 //Usuario.sync({force: true});
+Usuario.create({
+  nome: "Andre",
+  sobrenome: "Nascimento",
+  idade: 13,
+  email: "andrelve.dfaesfda"
+})
