@@ -1,12 +1,16 @@
 const express = require("../expressModulo/node_modules/express");
 const app = express();
 const handlebars = require('../expressModulo/node_modules/express-handlebars')
+const bodyParser = require('../expressModulo/node_modules/body-parser')
 const Sequelize = require('../expressModulo/node_modules/sequelize');
 
 //Config
   //Template Engine
     app.engine('handlebars', handlebars({defaultLayout: 'main'}))
     app.set('view engine', 'handlebars')
+  //BodyParser
+    app.use(bodyParser.urlencoded({extended: false}))
+    app.use(bodyParser.json())
 
   //Conexão com banco de dados mysql
   const sequelize = new Sequelize('test','root','415263',{
@@ -20,8 +24,8 @@ app.get('/cadastro', function(req, res){
     //res.send("teste")
 })
 
-app.post('/add', function(res, res){
-  res.send("Dados recebidos")
+app.post('/add', function(req,res){
+  res.send("Texto: " + req.body.titulo + " Conteudo: " + req.body.conteudo)
 })
 
 
