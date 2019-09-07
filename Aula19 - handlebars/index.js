@@ -20,6 +20,11 @@ app.get('/cadastro', function(req, res){
     //res.send("teste")
 })
 
+app.post('/add', function(res, res){
+  res.send("Dados recebidos")
+})
+
+
 app.listen(8082, function(){
   console.log("Servidor rodando na url http://localhost:8082/");
 })
