@@ -2,7 +2,6 @@ const express = require("../expressModulo/node_modules/express");
 const app = express();
 const handlebars = require('../expressModulo/node_modules/express-handlebars')
 const bodyParser = require('../expressModulo/node_modules/body-parser')
-const Sequelize = require('../expressModulo/node_modules/sequelize');
 
 //Config
   //Template Engine
@@ -11,12 +10,6 @@ const Sequelize = require('../expressModulo/node_modules/sequelize');
   //BodyParser
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
-
-  //Conexão com banco de dados mysql
-  const sequelize = new Sequelize('test','root','415263',{
-    host:"localhost",
-    dialect: 'mysql'
-  })
 
 //Rotas
 app.get('/cadastro', function(req, res){
