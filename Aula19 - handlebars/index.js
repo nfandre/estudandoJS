@@ -2,7 +2,7 @@ const express = require("../expressModulo/node_modules/express");
 const app = express();
 const handlebars = require('../expressModulo/node_modules/express-handlebars')
 const bodyParser = require('../expressModulo/node_modules/body-parser')
-
+const Post = require('./models/Post')
 //Config
   //Template Engine
     app.engine('handlebars', handlebars({defaultLayout: 'main'}))
@@ -12,13 +12,23 @@ const bodyParser = require('../expressModulo/node_modules/body-parser')
     app.use(bodyParser.json())
 
 //Rotas
+app.get('/', function(req,res){
+  res.render('home');
+})
 app.get('/cadastro', function(req, res){
     res.render('formulario')
     //res.send("teste")
 })
 
 app.post('/add', function(req,res){
-  res.send("Texto: " + req.body.titulo + " Conteudo: " + req.body.conteudo)
+  Post.create({
+    titulo: req.body.titulo,
+    conteudo: req.body.conteudo
+  }).then(function(){
+    res.redirect('/')
+  }).catch(function(erro){
+    res.send("Houve um erro: " + erro)
+  })
 })
 
 
