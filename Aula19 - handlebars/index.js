@@ -37,6 +37,15 @@ app.post('/add', function(req,res){
   })
 })
 
+app.get('/deletar/:id', function(req, res){
+  Post.destroy({where: {'id': req.params.id}}).then(function(){
+    res.send("postagem exluida")
+    //res.redirect('/')
+  }).catch(function(erro){
+    res.send("Esta postagem não existe")
+  })
+})
+
 
 app.listen(8082, function(){
   console.log("Servidor rodando na url http://localhost:8082/");
