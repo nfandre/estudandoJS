@@ -5,11 +5,9 @@ require("../models/Categoria")
 const Categoria = mongoose.model("categorias")
 require("../models/postagens")
 const Postagem = mongoose.model("postagens")
-//GRUPO DE ROTAS ADMISTRATIVAS
-router.get('/', (req, res) => {
-    res.render("admin/index")
-})
 
+
+//GRUPO DE ROTAS ADMISTRATIVAS
 router.get('/categorias', (req, res) =>{
     Categoria.find().sort({date: 'desc'}).then((categorias) =>{
         res.render("admin/categorias", {categorias: categorias})

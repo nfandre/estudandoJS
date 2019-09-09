@@ -8,6 +8,8 @@
     const mongoose = require('mongoose')
     const session = require("express-session")
     const flash = require("connect-flash")
+    require("./models/postagens")
+    const Postagem = mongoose.model("postagens")
 //Configurações
     //sessão
         app.use(session({
@@ -41,7 +43,19 @@
         app.use(express.static(path.join(__dirname, "public")))
 
 //Rotas
-    app.use('/admin', admin)
+app.get('/', (req, res) => {
+    Postagem.find().populate("categoria").sort({date: "desc"}).then((postagens)=>{
+        res.render("index", {postagens: postagens})
+    }).catch((err)=>{
+        console.log(err)
+        req.flash("error_msg", "Houve um erro interno")
+        res.redirect("/404")
+    })
+})
+
+app.get('/404', (req, res) => {
+    res.send('Erro 404!')
+})
 
 //Outros
 const PORT = 8081
