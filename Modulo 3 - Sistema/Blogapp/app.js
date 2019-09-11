@@ -61,6 +61,9 @@ app.get("/postagem/:slug",(req,res)=>{
             res.redirect("/")
 
         }
+    }).catch((err)=>{
+        req.flash("erro_msg", "Houve um erro interno")
+        res.redirect("/")
     })
 })
 
