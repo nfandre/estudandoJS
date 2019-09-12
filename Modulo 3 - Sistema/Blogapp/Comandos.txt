@@ -3,4 +3,4 @@ npm install --save express-handlebars
 npm install --save body-parser
 npm install --save mongoose
 npm install --save nodemon
-dsfadsasffsadf
+npm install --save bcryptjs
