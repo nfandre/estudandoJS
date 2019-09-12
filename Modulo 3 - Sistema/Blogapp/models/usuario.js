@@ -10,10 +10,14 @@ const Usuario = Schema({
         type: String,
         require: true
     },
+    eadmin:{
+        type: Number,
+        default: 0
+    },
     senha:{
         type: String,
         require: true
     }
 })
 
-mongoose.models('usuarios', Usuario)
+mongoose.model('usuarios', Usuario)
