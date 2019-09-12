@@ -4,3 +4,5 @@ npm install --save body-parser
 npm install --save mongoose
 npm install --save nodemon
 npm install --save bcryptjs
+npm install --save passport
+npm install --save passport-local
