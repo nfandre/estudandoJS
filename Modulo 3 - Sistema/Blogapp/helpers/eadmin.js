@@ -1,11 +1,11 @@
 module.exports = {
     eAdmin: function(req, res, next){
 
-        if(req.isAuthenticated() && req.user.eAdmin ==1){
+        if(req.isAuthenticated() && req.user.eadmin ==1){
             return next();
         }
 
-        req.flash("error_msg", "Você deve estar logado para entrar aqui")
+        req.flash("error_msg", "Você precisa ser um admins")
         res.redirect("/")
     }
 }
