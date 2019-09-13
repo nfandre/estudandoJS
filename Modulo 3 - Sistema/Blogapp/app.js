@@ -15,6 +15,7 @@
     const usuarios = require("./routes/usuario")
     const passport = require("passport")
     require("./config/auth")(passport)
+    const db = require("./config/db")
 
 //Configurações
     //sessão
@@ -43,7 +44,7 @@
         app.set('view engine', 'handlebars')
     //Mongoose
         mongoose.Promise = global.Promise;
-        mongoose.connect("mongodb://localhost/blogapp", {
+        mongoose.connect(db.mongoURI, {
             useNewUrlParser: true
         }).then(()=>{
             console.log("Conectado com o mongo")
@@ -53,7 +54,7 @@
     //Public
         app.use(express.static(path.join(__dirname, "public")))
 
-//Rotas
+////gitRotas
 app.get('/', (req, res) => {
     Postagem.find().populate("categoria").sort({date: "desc"}).then((postagens)=>{
         res.render("index", {postagens: postagens})
@@ -113,7 +114,7 @@ app.use("/admin", admin)
 app.use("/usuarios", usuarios)
 
 //Outros
-const PORT = 8081
+const PORT = process.env.PORT||8081
 app.listen(PORT, ()=>{
     console.log("Sevidor rodando! Porta: " + 8081)
 })

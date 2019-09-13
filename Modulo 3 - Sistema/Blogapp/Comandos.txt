@@ -6,3 +6,10 @@ npm install --save nodemon
 npm install --save bcryptjs
 npm install --save passport
 npm install --save passport-local
+
+-- subir heroku
+
+npm init
+Script
+ "start": "node app.js"
+npm start
